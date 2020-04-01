@@ -1,8 +1,5 @@
-/*.root {
-    -fx-background-color: #6f6e6e;
-}*/
 Button {
-    -fx-background-color: #f1ecec;;
+    -fx-background-color: #f1ecec;
 }
 
 #btnScientific, #btnTheme {
