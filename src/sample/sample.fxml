@@ -14,10 +14,10 @@
     </padding>
     <BorderPane>
         <left>
-            <Button fx:id="btnScientific" text="Scientific Mode"/>
+            <Button onMouseClicked="#onMouseClicked" onMouseEntered="#onMouseEntered" fx:id="btnScientific" text="Scientific Mode"/>
         </left>
         <right>
-            <Button onMouseClicked="#onMouseClicked" onMouseEntered="#onMouseEntered" fx:id="btnTheme"
+            <Button onMouseClicked="#switchTheme" onMouseEntered="#onMouseEntered" fx:id="btnTheme"
                     text="Switch Theme"/>
         </right>
         <bottom>
@@ -35,101 +35,101 @@
             <ColumnConstraints percentWidth="25"/>
             <ColumnConstraints percentWidth="25"/>
         </columnConstraints>
-        <Button fx:id="btnC" text="C" GridPane.rowIndex="0" GridPane.columnIndex="0" prefWidth="Infinity">
+        <Button onMouseClicked="#onMouseClicked" onMouseEntered="#onMouseEntered" fx:id="btnC" text="C" GridPane.rowIndex="0" GridPane.columnIndex="0" prefWidth="Infinity">
             <font>
                 <Font name="Cambria Math regular" size="16"/>
             </font>
         </Button>
-        <Button fx:id="btnBack" text="&lt;-" GridPane.rowIndex="0" GridPane.columnIndex="1" prefWidth="Infinity">
+        <Button onMouseClicked="#onMouseClicked" onMouseEntered="#onMouseEntered" fx:id="btnBack" text="&lt;-" GridPane.rowIndex="0" GridPane.columnIndex="1" prefWidth="Infinity">
             <font>
                 <Font name="Cambria Math regular" size="16"/>
             </font>
         </Button>
-        <Button fx:id="btnMod" text="\%" GridPane.rowIndex="0" GridPane.columnIndex="2" prefWidth="Infinity">
+        <Button onMouseClicked="#onMouseClicked" onMouseEntered="#onMouseEntered" fx:id="btnMod" text="\%" GridPane.rowIndex="0" GridPane.columnIndex="2" prefWidth="Infinity">
             <font>
                 <Font name="Cambria Math regular" size="16"/>
             </font>
         </Button>
-        <Button fx:id="btnDivide" text="/" GridPane.rowIndex="0" GridPane.columnIndex="3" prefWidth="Infinity">
-            <font>
-                <Font name="Cambria Math regular" size="16"/>
-            </font>
-        </Button>
-
-        <Button fx:id="btn7" text="7" GridPane.rowIndex="1" GridPane.columnIndex="0" prefWidth="Infinity">
-            <font>
-                <Font name="Cambria Math regular" size="16"/>
-            </font>
-        </Button>
-        <Button fx:id="btn8" text="8" GridPane.rowIndex="1" GridPane.columnIndex="1" prefWidth="Infinity">
-            <font>
-                <Font name="Cambria Math regular" size="16"/>
-            </font>
-        </Button>
-        <Button fx:id="btn9" text="9" GridPane.rowIndex="1" GridPane.columnIndex="2" prefWidth="Infinity">
-            <font>
-                <Font name="Cambria Math regular" size="16"/>
-            </font>
-        </Button>
-        <Button fx:id="btnMultiply" text="*" GridPane.rowIndex="1" GridPane.columnIndex="3" prefWidth="Infinity">
+        <Button onMouseClicked="#onMouseClicked" onMouseEntered="#onMouseEntered" fx:id="btnDivide" text="/" GridPane.rowIndex="0" GridPane.columnIndex="3" prefWidth="Infinity">
             <font>
                 <Font name="Cambria Math regular" size="16"/>
             </font>
         </Button>
 
-        <Button fx:id="btn4" text="4" GridPane.rowIndex="2" GridPane.columnIndex="0" prefWidth="Infinity">
+        <Button onMouseClicked="#onMouseClicked" onMouseEntered="#onMouseEntered" fx:id="btn7" text="7" GridPane.rowIndex="1" GridPane.columnIndex="0" prefWidth="Infinity">
             <font>
                 <Font name="Cambria Math regular" size="16"/>
             </font>
         </Button>
-        <Button fx:id="btn5" text="5" GridPane.rowIndex="2" GridPane.columnIndex="1" prefWidth="Infinity">
+        <Button onMouseClicked="#onMouseClicked" onMouseEntered="#onMouseEntered" fx:id="btn8" text="8" GridPane.rowIndex="1" GridPane.columnIndex="1" prefWidth="Infinity">
             <font>
                 <Font name="Cambria Math regular" size="16"/>
             </font>
         </Button>
-        <Button fx:id="btn6" text="6" GridPane.rowIndex="2" GridPane.columnIndex="2" prefWidth="Infinity">
+        <Button onMouseClicked="#onMouseClicked" onMouseEntered="#onMouseEntered" fx:id="btn9" text="9" GridPane.rowIndex="1" GridPane.columnIndex="2" prefWidth="Infinity">
             <font>
                 <Font name="Cambria Math regular" size="16"/>
             </font>
         </Button>
-        <Button fx:id="btnMinus" text="-" GridPane.rowIndex="2" GridPane.columnIndex="3" prefWidth="Infinity">
-            <font>
-                <Font name="Cambria Math regular" size="16"/>
-            </font>
-        </Button>
-
-        <Button fx:id="btn1" text="1" GridPane.rowIndex="3" GridPane.columnIndex="0" prefWidth="Infinity">
-            <font>
-                <Font name="Cambria Math regular" size="16"/>
-            </font>
-        </Button>
-        <Button fx:id="btn2" text="2" GridPane.rowIndex="3" GridPane.columnIndex="1" prefWidth="Infinity">
-            <font>
-                <Font name="Cambria Math regular" size="16"/>
-            </font>
-        </Button>
-        <Button fx:id="btn3" text="3" GridPane.rowIndex="3" GridPane.columnIndex="2" prefWidth="Infinity">
-            <font>
-                <Font name="Cambria Math regular" size="16"/>
-            </font>
-        </Button>
-        <Button fx:id="btnPlus" text="+" GridPane.rowIndex="3" GridPane.columnIndex="3" prefWidth="Infinity">
+        <Button onMouseClicked="#onMouseClicked" onMouseEntered="#onMouseEntered" fx:id="btnMultiply" text="*" GridPane.rowIndex="1" GridPane.columnIndex="3" prefWidth="Infinity">
             <font>
                 <Font name="Cambria Math regular" size="16"/>
             </font>
         </Button>
 
-        <Button fx:id="btnDot" text="." GridPane.rowIndex="4" GridPane.columnIndex="0" prefWidth="Infinity">
+        <Button onMouseClicked="#onMouseClicked" onMouseEntered="#onMouseEntered" fx:id="btn4" text="4" GridPane.rowIndex="2" GridPane.columnIndex="0" prefWidth="Infinity">
             <font>
                 <Font name="Cambria Math regular" size="16"/>
             </font>
         </Button>
-        <Button fx:id="btn0" text="0" GridPane.rowIndex="4" GridPane.columnIndex="1" prefWidth="Infinity">
+        <Button onMouseClicked="#onMouseClicked" onMouseEntered="#onMouseEntered" fx:id="btn5" text="5" GridPane.rowIndex="2" GridPane.columnIndex="1" prefWidth="Infinity">
             <font>
                 <Font name="Cambria Math regular" size="16"/>
             </font>
         </Button>
-        <Button fx:id="btnEqual" text="=" GridPane.rowIndex="4" GridPane.columnIndex="2" GridPane.columnSpan="2"
+        <Button onMouseClicked="#onMouseClicked" onMouseEntered="#onMouseEntered" fx:id="btn6" text="6" GridPane.rowIndex="2" GridPane.columnIndex="2" prefWidth="Infinity">
+            <font>
+                <Font name="Cambria Math regular" size="16"/>
+            </font>
+        </Button>
+        <Button onMouseClicked="#onMouseClicked" onMouseEntered="#onMouseEntered" fx:id="btnMinus" text="-" GridPane.rowIndex="2" GridPane.columnIndex="3" prefWidth="Infinity">
+            <font>
+                <Font name="Cambria Math regular" size="16"/>
+            </font>
+        </Button>
+
+        <Button onMouseClicked="#onMouseClicked" onMouseEntered="#onMouseEntered" fx:id="btn1" text="1" GridPane.rowIndex="3" GridPane.columnIndex="0" prefWidth="Infinity">
+            <font>
+                <Font name="Cambria Math regular" size="16"/>
+            </font>
+        </Button>
+        <Button onMouseClicked="#onMouseClicked" onMouseEntered="#onMouseEntered" fx:id="btn2" text="2" GridPane.rowIndex="3" GridPane.columnIndex="1" prefWidth="Infinity">
+            <font>
+                <Font name="Cambria Math regular" size="16"/>
+            </font>
+        </Button>
+        <Button onMouseClicked="#onMouseClicked" onMouseEntered="#onMouseEntered" fx:id="btn3" text="3" GridPane.rowIndex="3" GridPane.columnIndex="2" prefWidth="Infinity">
+            <font>
+                <Font name="Cambria Math regular" size="16"/>
+            </font>
+        </Button>
+        <Button onMouseClicked="#onMouseClicked" onMouseEntered="#onMouseEntered" fx:id="btnPlus" text="+" GridPane.rowIndex="3" GridPane.columnIndex="3" prefWidth="Infinity">
+            <font>
+                <Font name="Cambria Math regular" size="16"/>
+            </font>
+        </Button>
+
+        <Button onMouseClicked="#onMouseClicked" onMouseEntered="#onMouseEntered" fx:id="btnDot" text="." GridPane.rowIndex="4" GridPane.columnIndex="0" prefWidth="Infinity">
+            <font>
+                <Font name="Cambria Math regular" size="16"/>
+            </font>
+        </Button>
+        <Button onMouseClicked="#onMouseClicked" onMouseEntered="#onMouseEntered" fx:id="btn0" text="0" GridPane.rowIndex="4" GridPane.columnIndex="1" prefWidth="Infinity">
+            <font>
+                <Font name="Cambria Math regular" size="16"/>
+            </font>
+        </Button>
+        <Button onMouseClicked="#onMouseClicked" onMouseEntered="#onMouseEntered" fx:id="btnEqual" text="=" GridPane.rowIndex="4" GridPane.columnIndex="2" GridPane.columnSpan="2"
                 prefWidth="Infinity">
             <font>
                 <Font name="Cambria Math regular" size="16"/>
