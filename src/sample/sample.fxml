@@ -14,7 +14,7 @@
     </padding>
     <BorderPane>
         <left>
-            <Button onMouseClicked="#onMouseClicked" onMouseEntered="#onMouseEntered" fx:id="btnScientific" text="Scientific Mode"/>
+            <Button onMouseClicked="#scientificFunction" onMouseEntered="#onMouseEntered" fx:id="btnScientific" text="Scientific Mode"/>
         </left>
         <right>
             <Button onMouseClicked="#switchTheme" onMouseEntered="#onMouseEntered" fx:id="btnTheme"
@@ -28,7 +28,7 @@
             </TextArea>
         </bottom>
     </BorderPane>
-    <GridPane VBox.vgrow="ALWAYS" vgap="10" hgap="10">
+    <GridPane fx:id="gridPane" VBox.vgrow="ALWAYS" vgap="10" hgap="10">
         <columnConstraints>
             <ColumnConstraints percentWidth="25"/>
             <ColumnConstraints percentWidth="25"/>
@@ -129,11 +129,18 @@
                 <Font name="Cambria Math regular" size="16"/>
             </font>
         </Button>
-        <Button onMouseClicked="#onMouseClicked" onMouseEntered="#onMouseEntered" fx:id="btnEqual" text="=" GridPane.rowIndex="4" GridPane.columnIndex="2" GridPane.columnSpan="2"
+        <Button onMouseClicked="#onMouseClicked" onMouseEntered="#onMouseEntered" fx:id="btnPower" text="pow" GridPane.rowIndex="4" GridPane.columnIndex="2"
                 prefWidth="Infinity">
             <font>
                 <Font name="Cambria Math regular" size="16"/>
             </font>
         </Button>
+        <Button onMouseClicked="#onMouseClicked" onMouseEntered="#onMouseEntered" fx:id="btnEqual" text="=" GridPane.rowIndex="4" GridPane.columnIndex="3"
+                prefWidth="Infinity">
+            <font>
+                <Font name="Cambria Math regular" size="16"/>
+            </font>
+        </Button>
+
     </GridPane>
 </VBox>

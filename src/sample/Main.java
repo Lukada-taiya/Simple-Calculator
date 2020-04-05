@@ -7,6 +7,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+    private static final int WINDOW_WIDTH = 300;
+    private static final int WINDOW_HEIGHT = 360;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -16,7 +18,7 @@ public class Main extends Application {
         root.setStyle("-fx-background-color: #6f6e6e;");
         primaryStage.setTitle("Simple Calculator");
         primaryStage.setResizable(false);
-        primaryStage.setScene(new Scene(root, 300, 360));
+        primaryStage.setScene(new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT));
         primaryStage.show();
 
     }
