@@ -6,18 +6,31 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
+import static jdk.nashorn.internal.objects.Global.Infinity;
 
 public class Controller {
 
     private int themeNum = 0;
+    private boolean isScientific = false;
+    private Stage primaryStage;
+    private Button btnSqrt, btnLog, btnSin, btnCos, btnTan;
+
+    private static final int WINDOW_WIDTH_RESIZE = 380;
+    private static final int WINDOW_WIDTH = 300;
 
     @FXML
     private Button btnScientific, btnTheme, btnC, btnBack, btnMod, btnDivide, btn7, btn8, btn9, btnMultiply, btn4, btn5, btn6, btnMinus,
-            btn1, btn2, btn3, btnPlus, btnDot, btn0, btnEqual;
+            btn1, btn2, btn3, btnPlus, btnDot, btn0, btnPower, btnEqual;
+    @FXML
+    private GridPane gridPane;
 
 
     @FXML
-    private void onMouseEntered() {
+    private void onMouseEntered(MouseEvent event) {
         btnScientific.setCursor(Cursor.HAND);
         btnTheme.setCursor(Cursor.HAND);
         btnC.setCursor(Cursor.HAND);
@@ -38,11 +51,22 @@ public class Controller {
         btnPlus.setCursor(Cursor.HAND);
         btnDot.setCursor(Cursor.HAND);
         btn0.setCursor(Cursor.HAND);
+        btnPower.setCursor(Cursor.HAND);
         btnEqual.setCursor(Cursor.HAND);
+
+        primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        if(primaryStage.getWidth() == WINDOW_WIDTH_RESIZE) {
+            btnSqrt.setCursor(Cursor.HAND);
+            btnLog.setCursor(Cursor.HAND);
+            btnSin.setCursor(Cursor.HAND);
+            btnCos.setCursor(Cursor.HAND);
+            btnTan.setCursor(Cursor.HAND);
+        }
     }
 
     @FXML
-    private void onMouseClicked() {
+    private void onMouseClicked(MouseEvent event) {
         btnScientific.setCursor(Cursor.CLOSED_HAND);
         btnC.setCursor(Cursor.CLOSED_HAND);
         btnBack.setCursor(Cursor.CLOSED_HAND);
@@ -62,7 +86,18 @@ public class Controller {
         btnPlus.setCursor(Cursor.CLOSED_HAND);
         btnDot.setCursor(Cursor.CLOSED_HAND);
         btn0.setCursor(Cursor.CLOSED_HAND);
+        btnPower.setCursor(Cursor.CLOSED_HAND);
         btnEqual.setCursor(Cursor.CLOSED_HAND);
+
+        primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        if(primaryStage.getWidth() == WINDOW_WIDTH_RESIZE) {
+            btnSqrt.setCursor(Cursor.CLOSED_HAND);
+            btnLog.setCursor(Cursor.CLOSED_HAND);
+            btnSin.setCursor(Cursor.CLOSED_HAND);
+            btnCos.setCursor(Cursor.CLOSED_HAND);
+            btnTan.setCursor(Cursor.CLOSED_HAND);
+        }
     }
 
     @FXML
@@ -70,7 +105,7 @@ public class Controller {
         btnTheme.setCursor(Cursor.CLOSED_HAND);
 
         Parent root = ((Node) event.getSource()).getScene().getRoot();
-
+        primaryStage = (Stage)root.getScene().getWindow();
         themeNum++;
         if(themeNum == 0) {
             root.setStyle("-fx-background-color: #6f6e6e;");
@@ -95,7 +130,16 @@ public class Controller {
             btnPlus.setStyle("-fx-background-color: #f1ecec;");
             btnDot.setStyle("-fx-background-color: #f1ecec;");
             btn0.setStyle("-fx-background-color: #f1ecec;");
+            btnPower.setStyle("-fx-background-color: #f1ecec;");
             btnEqual.setStyle("-fx-background-color: #f1ecec;");
+
+            if(primaryStage.getWidth() == WINDOW_WIDTH_RESIZE) {
+                btnSqrt.setStyle("-fx-background-color: #f1ecec;");
+                btnLog.setStyle("-fx-background-color: #f1ecec;");
+                btnSin.setStyle("-fx-background-color: #f1ecec;");
+                btnCos.setStyle("-fx-background-color: #f1ecec;");
+                btnTan.setStyle("-fx-background-color: #f1ecec;");
+            }
 
         }else if(themeNum == 1) {
             root.setStyle("-fx-background-color: #f6f6f6;");
@@ -120,7 +164,16 @@ public class Controller {
             btnPlus.setStyle("-fx-background-color: #fff;");
             btnDot.setStyle("-fx-background-color: #fff;");
             btn0.setStyle("-fx-background-color: #fff;");
+            btnPower.setStyle("-fx-background-color: #fff;");
             btnEqual.setStyle("-fx-background-color: #fff;");
+
+            if(primaryStage.getWidth() == WINDOW_WIDTH_RESIZE) {
+                btnSqrt.setStyle("-fx-background-color: #fff;");
+                btnLog.setStyle("-fx-background-color: #fff;");
+                btnSin.setStyle("-fx-background-color: #fff;");
+                btnCos.setStyle("-fx-background-color: #fff;");
+                btnTan.setStyle("-fx-background-color: #fff;");
+            }
 
         }else if(themeNum == 2) {
             root.setStyle("-fx-background-color: #5157ff;");
@@ -145,11 +198,102 @@ public class Controller {
             btnPlus.setStyle("-fx-background-color: #0009FF; -fx-text-fill: #fff");
             btnDot.setStyle("-fx-background-color: #0009FF; -fx-text-fill: #fff");
             btn0.setStyle("-fx-background-color: #0009FF; -fx-text-fill: #fff");
+            btnPower.setStyle("-fx-background-color: #0009FF; -fx-text-fill: #fff;");
             btnEqual.setStyle("-fx-background-color: #0009FF; -fx-text-fill: #fff;");
 
+            if(primaryStage.getWidth() == WINDOW_WIDTH_RESIZE) {
+                btnSqrt.setStyle("-fx-background-color: #0009FF; -fx-text-fill: #fff;");
+                btnLog.setStyle("-fx-background-color: #0009FF; -fx-text-fill: #fff;");
+                btnSin.setStyle("-fx-background-color: #0009FF; -fx-text-fill: #fff;");
+                btnCos.setStyle("-fx-background-color: #0009FF; -fx-text-fill: #fff;");
+                btnTan.setStyle("-fx-background-color: #0009FF; -fx-text-fill: #fff;");
+            }
 
             themeNum = -1;
         }
+    }
+
+    @FXML
+    public void scientificFunction(MouseEvent event) {
+
+
+        if(isScientific) {
+            btnScientific.setCursor(Cursor.CLOSED_HAND);
+
+            primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            primaryStage.setWidth(WINDOW_WIDTH);
+
+            gridPane.getChildren().remove(24);
+            gridPane.getChildren().remove(23);
+            gridPane.getChildren().remove(22);
+            gridPane.getChildren().remove(21);
+            gridPane.getChildren().remove(20);
+
+            gridPane.getColumnConstraints().remove(0);
+            gridPane.getColumnConstraints().replaceAll(columnConstraints -> {
+                columnConstraints.setPercentWidth(25);
+                return columnConstraints;
+            });
+
+            isScientific = false;
+        }else {
+            btnScientific.setCursor(Cursor.CLOSED_HAND);
+
+            Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            primaryStage.setWidth(WINDOW_WIDTH_RESIZE);
+
+            btnSqrt = new Button("sqrt ");
+            btnSqrt.prefWidth(Infinity);
+            btnSqrt.setFont(Font.font("Cambria Math regular", 16));
+
+            btnLog = new Button(" log ");
+            btnLog.prefWidth(Infinity);
+            btnLog.setFont(Font.font("Cambria Math regular", 16));
+
+            btnSin = new Button(" sin  ");
+            btnSin.prefWidth(Infinity);
+            btnSin.setFont(Font.font("Cambria Math regular", 16));
+
+            btnCos = new Button(" cos ");
+            btnCos.prefWidth(Infinity);
+            btnCos.setFont(Font.font("Cambria Math regular", 16));
+
+            btnTan = new Button(" tan ");
+            btnTan.prefWidth(Infinity);
+            btnTan.setFont(Font.font("Cambria Math regular", 16));
+
+            gridPane.getColumnConstraints().replaceAll(columnConstraints -> {
+                columnConstraints.setPercentWidth(20);
+                return columnConstraints;
+            });
+
+            ColumnConstraints col = new ColumnConstraints();
+            col.setPercentWidth(20);
+            gridPane.getColumnConstraints().add(col);
+
+            gridPane.add(btnSqrt, 4, 0);
+            gridPane.add(btnLog, 4, 1);
+            gridPane.add(btnSin, 4, 2);
+            gridPane.add(btnCos, 4, 3);
+            gridPane.add(btnTan, 4, 4);
+
+            if(themeNum == 1) {
+                btnSqrt.setStyle("-fx-background-color: #fff;");
+                btnLog.setStyle("-fx-background-color: #fff;");
+                btnSin.setStyle("-fx-background-color: #fff;");
+                btnCos.setStyle("-fx-background-color: #fff;");
+                btnTan.setStyle("-fx-background-color: #fff;");
+            }else if(themeNum == -1) {
+                btnSqrt.setStyle("-fx-background-color: #0009FF; -fx-text-fill: #fff;");
+                btnLog.setStyle("-fx-background-color: #0009FF; -fx-text-fill: #fff;");
+                btnSin.setStyle("-fx-background-color: #0009FF; -fx-text-fill: #fff;");
+                btnCos.setStyle("-fx-background-color: #0009FF; -fx-text-fill: #fff;");
+                btnTan.setStyle("-fx-background-color: #0009FF; -fx-text-fill: #fff;");
+            }
+
+            isScientific = true;
+        }
+
     }
 
 
