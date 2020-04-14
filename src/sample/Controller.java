@@ -1,21 +1,27 @@
 package sample;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+
+
+import java.util.Optional;
+
 import static jdk.nashorn.internal.objects.Global.Infinity;
 
 public class Controller {
 
     private int themeNum = 0;
-    private boolean isScientific = false;
+    private boolean isScientific = false, isBtnCClicked = false;
     private Stage primaryStage;
     private Button btnSqrt, btnLog, btnSin, btnCos, btnTan;
 
@@ -23,83 +29,212 @@ public class Controller {
     private static final int WINDOW_WIDTH = 300;
 
     @FXML
+    private TextArea inText;
+    @FXML
     private Button btnScientific, btnTheme, btnC, btnBack, btnMod, btnDivide, btn7, btn8, btn9, btnMultiply, btn4, btn5, btn6, btnMinus,
             btn1, btn2, btn3, btnPlus, btnDot, btn0, btnPower, btnEqual;
     @FXML
     private GridPane gridPane;
 
-
-    @FXML
-    private void onMouseEntered(MouseEvent event) {
-        btnScientific.setCursor(Cursor.HAND);
-        btnTheme.setCursor(Cursor.HAND);
-        btnC.setCursor(Cursor.HAND);
-        btnBack.setCursor(Cursor.HAND);
-        btnMod.setCursor(Cursor.HAND);
-        btnDivide.setCursor(Cursor.HAND);
-        btn7.setCursor(Cursor.HAND);
-        btn8.setCursor(Cursor.HAND);
-        btn9.setCursor(Cursor.HAND);
-        btnMultiply.setCursor(Cursor.HAND);
-        btn4.setCursor(Cursor.HAND);
-        btn5.setCursor(Cursor.HAND);
-        btn6.setCursor(Cursor.HAND);
-        btnMinus.setCursor(Cursor.HAND);
-        btn1.setCursor(Cursor.HAND);
-        btn2.setCursor(Cursor.HAND);
-        btn3.setCursor(Cursor.HAND);
-        btnPlus.setCursor(Cursor.HAND);
-        btnDot.setCursor(Cursor.HAND);
-        btn0.setCursor(Cursor.HAND);
-        btnPower.setCursor(Cursor.HAND);
-        btnEqual.setCursor(Cursor.HAND);
-
-        primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-        if(primaryStage.getWidth() == WINDOW_WIDTH_RESIZE) {
-            btnSqrt.setCursor(Cursor.HAND);
-            btnLog.setCursor(Cursor.HAND);
-            btnSin.setCursor(Cursor.HAND);
-            btnCos.setCursor(Cursor.HAND);
-            btnTan.setCursor(Cursor.HAND);
-        }
+    public void initialize() {
+        detectInput();
     }
 
+
+//  Sets the cursor when the cursor enters or clicks on any of the buttons
     @FXML
-    private void onMouseClicked(MouseEvent event) {
-        btnScientific.setCursor(Cursor.CLOSED_HAND);
-        btnC.setCursor(Cursor.CLOSED_HAND);
-        btnBack.setCursor(Cursor.CLOSED_HAND);
-        btnMod.setCursor(Cursor.CLOSED_HAND);
-        btnDivide.setCursor(Cursor.CLOSED_HAND);
-        btn7.setCursor(Cursor.CLOSED_HAND);
-        btn8.setCursor(Cursor.CLOSED_HAND);
-        btn9.setCursor(Cursor.CLOSED_HAND);
-        btnMultiply.setCursor(Cursor.CLOSED_HAND);
-        btn4.setCursor(Cursor.CLOSED_HAND);
-        btn5.setCursor(Cursor.CLOSED_HAND);
-        btn6.setCursor(Cursor.CLOSED_HAND);
-        btnMinus.setCursor(Cursor.CLOSED_HAND);
-        btn1.setCursor(Cursor.CLOSED_HAND);
-        btn2.setCursor(Cursor.CLOSED_HAND);
-        btn3.setCursor(Cursor.CLOSED_HAND);
-        btnPlus.setCursor(Cursor.CLOSED_HAND);
-        btnDot.setCursor(Cursor.CLOSED_HAND);
-        btn0.setCursor(Cursor.CLOSED_HAND);
-        btnPower.setCursor(Cursor.CLOSED_HAND);
-        btnEqual.setCursor(Cursor.CLOSED_HAND);
+    private void onMouseEvent(MouseEvent event) {
+         if(event.getEventType().toString().equals("MOUSE_ENTERED")) {
+            btnScientific.setCursor(Cursor.HAND);
+            btnTheme.setCursor(Cursor.HAND);
+            btnC.setCursor(Cursor.HAND);
+            btnBack.setCursor(Cursor.HAND);
+            btnMod.setCursor(Cursor.HAND);
+            btnDivide.setCursor(Cursor.HAND);
+            btn7.setCursor(Cursor.HAND);
+            btn8.setCursor(Cursor.HAND);
+            btn9.setCursor(Cursor.HAND);
+            btnMultiply.setCursor(Cursor.HAND);
+            btn4.setCursor(Cursor.HAND);
+            btn5.setCursor(Cursor.HAND);
+            btn6.setCursor(Cursor.HAND);
+            btnMinus.setCursor(Cursor.HAND);
+            btn1.setCursor(Cursor.HAND);
+            btn2.setCursor(Cursor.HAND);
+            btn3.setCursor(Cursor.HAND);
+            btnPlus.setCursor(Cursor.HAND);
+            btnDot.setCursor(Cursor.HAND);
+            btn0.setCursor(Cursor.HAND);
+            btnPower.setCursor(Cursor.HAND);
+            btnEqual.setCursor(Cursor.HAND);
 
-        primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-        if(primaryStage.getWidth() == WINDOW_WIDTH_RESIZE) {
-            btnSqrt.setCursor(Cursor.CLOSED_HAND);
-            btnLog.setCursor(Cursor.CLOSED_HAND);
-            btnSin.setCursor(Cursor.CLOSED_HAND);
-            btnCos.setCursor(Cursor.CLOSED_HAND);
-            btnTan.setCursor(Cursor.CLOSED_HAND);
-        }
+            if(primaryStage.getWidth() == WINDOW_WIDTH_RESIZE) {
+                btnSqrt.setCursor(Cursor.HAND);
+                btnLog.setCursor(Cursor.HAND);
+                btnSin.setCursor(Cursor.HAND);
+                btnCos.setCursor(Cursor.HAND);
+                btnTan.setCursor(Cursor.HAND);
+            }
+         }else if(event.getEventType().toString().equals("MOUSE_CLICKED")) {
+             btnScientific.setCursor(Cursor.CLOSED_HAND);
+             btnC.setCursor(Cursor.CLOSED_HAND);
+             btnBack.setCursor(Cursor.CLOSED_HAND);
+             btnMod.setCursor(Cursor.CLOSED_HAND);
+             btnDivide.setCursor(Cursor.CLOSED_HAND);
+             btn7.setCursor(Cursor.CLOSED_HAND);
+             btn8.setCursor(Cursor.CLOSED_HAND);
+             btn9.setCursor(Cursor.CLOSED_HAND);
+             btnMultiply.setCursor(Cursor.CLOSED_HAND);
+             btn4.setCursor(Cursor.CLOSED_HAND);
+             btn5.setCursor(Cursor.CLOSED_HAND);
+             btn6.setCursor(Cursor.CLOSED_HAND);
+             btnMinus.setCursor(Cursor.CLOSED_HAND);
+             btn1.setCursor(Cursor.CLOSED_HAND);
+             btn2.setCursor(Cursor.CLOSED_HAND);
+             btn3.setCursor(Cursor.CLOSED_HAND);
+             btnPlus.setCursor(Cursor.CLOSED_HAND);
+             btnDot.setCursor(Cursor.CLOSED_HAND);
+             btn0.setCursor(Cursor.CLOSED_HAND);
+             btnPower.setCursor(Cursor.CLOSED_HAND);
+             btnEqual.setCursor(Cursor.CLOSED_HAND);
+
+             primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+             if(primaryStage.getWidth() == WINDOW_WIDTH_RESIZE) {
+                 btnSqrt.setCursor(Cursor.CLOSED_HAND);
+                 btnLog.setCursor(Cursor.CLOSED_HAND);
+                 btnSin.setCursor(Cursor.CLOSED_HAND);
+                 btnCos.setCursor(Cursor.CLOSED_HAND);
+                 btnTan.setCursor(Cursor.CLOSED_HAND);
+             }
+
+         }
     }
 
+//  Controls behaviour when any of the buttons are clicked
+    @FXML
+    private void onAction(ActionEvent event) {
+        Button btn = (Button) event.getSource();
+        String inputString = btn.getId();
+
+//      Making default text 0 a blank string to make calculation easier
+        if(inText.getText().equals("0")) {
+            inText.setText("");
+        }
+
+        switch(inputString) {
+            case "btnC":
+                isBtnCClicked = true;
+
+//              Resetting font size when input is cleared, setting initial input text to 0
+                inText.setFont(Font.font("Arial", FontWeight.BOLD, 22));
+                inText.setText("0");
+                break;
+            case "btnBack":
+                inputString = inText.getText();
+                StringBuilder str1 = new StringBuilder();
+                for (int i = 0; i< inputString.length()-1; i++) {
+                    str1.append(inputString.charAt(i));
+                }
+//              Setting initial input text to 0
+                if(str1.toString().equals("")) {
+                    inText.setText("0");
+                }else {
+                    inText.setText(str1.toString());
+                }
+
+                setInputFont();
+                break;
+            case "btnMod":
+                //inputString = inText.getText();
+                break;
+            case "btnDivide":
+                break;
+            case "btn7":
+                inputString = inText.getText();
+                inputString += "7";
+                inText.setText(inputString);
+                break;
+            case "btn8":
+                inputString = inText.getText();
+                inputString += "8";
+                inText.setText(inputString);
+                break;
+            case "btn9":
+                inputString = inText.getText();
+                inputString += "9";
+                inText.setText(inputString);
+                break;
+            case "btnMultiply":
+                break;
+            case "btn4":
+                inputString = inText.getText();
+                inputString += "4";
+                inText.setText(inputString);
+                break;
+            case "btn5":
+                inputString = inText.getText();
+                inputString += "5";
+                inText.setText(inputString);
+                break;
+            case "btn6":
+                inputString = inText.getText();
+                inputString += "6";
+                inText.setText(inputString);
+                break;
+            case "btnMinus":
+                break;
+            case "btn1":
+                inputString = inText.getText();
+                inputString += "1";
+                inText.setText(inputString);
+                break;
+            case "btn2":
+                inputString = inText.getText();
+                inputString += "2";
+                inText.setText(inputString);
+                break;
+            case "btn3":
+                inputString = inText.getText();
+                inputString += "3";
+                inText.setText(inputString);
+                break;
+            case "btnPlus":
+                break;
+            case "btnDot":
+                inputString = inText.getText();
+                inputString += ".";
+                inText.setText(inputString);
+                break;
+            case "btn0":
+                inputString = inText.getText();
+                inputString += "0";
+                inText.setText(inputString);
+                break;
+            case "btnPower":
+                inText.setText(inputString);
+                break;
+            case "btnEqual":
+                break;
+            case "btnSqrt":
+                break;
+            case "btnLog":
+                break;
+            case "btnSin":
+                break;
+            case "btnCos":
+                break;
+            case "btnTan":
+                break;
+            default:
+                break;
+        }
+
+    }
+
+//  Provides code for when the btnTheme is clicked
     @FXML
     public void switchTheme(MouseEvent event) {
         btnTheme.setCursor(Cursor.CLOSED_HAND);
@@ -213,54 +348,143 @@ public class Controller {
         }
     }
 
+//  Provides code for when there is an entry in the input button
+    private void detectInput() {
+
+        inText.setTextFormatter(new TextFormatter<String>(change -> {
+            int newInputLength = change.getControlNewText().length();
+
+            if (newInputLength >= 19) {
+                ScrollPane scrollPane = (ScrollPane) inText.lookup("#inText .scroll-bar:vertical").getParent();
+                scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+            }
+            if(isScientific) {
+                if(newInputLength >= 51 && newInputLength <= 70) {
+                    inText.setFont(Font.font("Arial", FontWeight.BOLD, 16));
+                    return change;
+                }else if (isBtnCClicked) {
+                    isBtnCClicked = false;
+                    return change;
+                } else {
+                     if(newInputLength > 70) {
+                         return null;
+                     }else {
+                         return change;
+                     }
+                }
+            }else {
+                if (newInputLength >= 38 && newInputLength <= 52) {
+                    inText.setFont(Font.font("Arial", FontWeight.BOLD, 16));
+                    return change;
+                }else if (isBtnCClicked) {
+                        isBtnCClicked = false;
+                        return change;
+                    } else {
+                        if(newInputLength > 52) {
+                            return null;
+                        }else {
+                            return change;
+                        }
+                    }
+                }
+        }));
+    }
+
+//  Controls behaviour of application when the btnScientific is clicked
     @FXML
     public void scientificFunction(MouseEvent event) {
 
 
+
         if(isScientific) {
+
             btnScientific.setCursor(Cursor.CLOSED_HAND);
 
-            primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            primaryStage.setWidth(WINDOW_WIDTH);
+            if(inText.getText().length() > 52) {
 
-            gridPane.getChildren().remove(24);
-            gridPane.getChildren().remove(23);
-            gridPane.getChildren().remove(22);
-            gridPane.getChildren().remove(21);
-            gridPane.getChildren().remove(20);
+                Alert alertTrim = new Alert(Alert.AlertType.CONFIRMATION);
+                alertTrim.setTitle("Confirm Trim");
+                alertTrim.setHeaderText("Are you sure you want to change mode?");
+                alertTrim.setContentText("The Non-Scientific Mode has less capacity than the Scientific Mode. Therefore switching back to the Non-Scientific Mode now" +
+                        " will trim the values you have entered so far.");
 
-            gridPane.getColumnConstraints().remove(0);
-            gridPane.getColumnConstraints().replaceAll(columnConstraints -> {
-                columnConstraints.setPercentWidth(25);
-                return columnConstraints;
-            });
+                Optional<ButtonType> response = alertTrim.showAndWait();
 
-            isScientific = false;
+                if (response.get() == ButtonType.OK){
+
+                    isScientific = false;
+
+                    primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    primaryStage.setWidth(WINDOW_WIDTH);
+
+                    gridPane.getChildren().remove(24);
+                    gridPane.getChildren().remove(23);
+                    gridPane.getChildren().remove(22);
+                    gridPane.getChildren().remove(21);
+                    gridPane.getChildren().remove(20);
+
+                    gridPane.getColumnConstraints().remove(0);
+                    gridPane.getColumnConstraints().replaceAll(columnConstraints -> {
+                        columnConstraints.setPercentWidth(25);
+                        return columnConstraints;
+                    });
+        //          Trims off extra input text when btnScientific is clicked
+                    inText.setText(inText.getText().substring(0, 52));
+
+                    setInputFont();
+
+                } else {
+                    alertTrim.close();
+                }
+
+            }else {
+                isScientific = false;
+
+                primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                primaryStage.setWidth(WINDOW_WIDTH);
+
+                gridPane.getChildren().remove(24);
+                gridPane.getChildren().remove(23);
+                gridPane.getChildren().remove(22);
+                gridPane.getChildren().remove(21);
+                gridPane.getChildren().remove(20);
+
+                gridPane.getColumnConstraints().remove(0);
+                gridPane.getColumnConstraints().replaceAll(columnConstraints -> {
+                    columnConstraints.setPercentWidth(25);
+                    return columnConstraints;
+                });
+
+                setInputFont();
+            }
+
+
+
         }else {
-            btnScientific.setCursor(Cursor.CLOSED_HAND);
+            isScientific = true;
 
             Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             primaryStage.setWidth(WINDOW_WIDTH_RESIZE);
 
             btnSqrt = new Button("sqrt ");
             btnSqrt.prefWidth(Infinity);
-            btnSqrt.setFont(Font.font("Cambria Math regular", 16));
+            btnSqrt.setFont(Font.font("Arial", 16));
 
             btnLog = new Button(" log ");
             btnLog.prefWidth(Infinity);
-            btnLog.setFont(Font.font("Cambria Math regular", 16));
+            btnLog.setFont(Font.font("Arial", 16));
 
             btnSin = new Button(" sin  ");
             btnSin.prefWidth(Infinity);
-            btnSin.setFont(Font.font("Cambria Math regular", 16));
+            btnSin.setFont(Font.font("Arial", 16));
 
             btnCos = new Button(" cos ");
             btnCos.prefWidth(Infinity);
-            btnCos.setFont(Font.font("Cambria Math regular", 16));
+            btnCos.setFont(Font.font("Arial", 16));
 
             btnTan = new Button(" tan ");
             btnTan.prefWidth(Infinity);
-            btnTan.setFont(Font.font("Cambria Math regular", 16));
+            btnTan.setFont(Font.font("Arial", 16));
 
             gridPane.getColumnConstraints().replaceAll(columnConstraints -> {
                 columnConstraints.setPercentWidth(20);
@@ -290,11 +514,29 @@ public class Controller {
                 btnCos.setStyle("-fx-background-color: #0009FF; -fx-text-fill: #fff;");
                 btnTan.setStyle("-fx-background-color: #0009FF; -fx-text-fill: #fff;");
             }
+            setInputFont();
 
-            isScientific = true;
         }
 
     }
+
+//  Sets the appropriate font of the input field where neccessary
+    private void setInputFont() {
+        if(isScientific) {
+            if (inText.getText().length() < 51) {
+                inText.setFont(Font.font("Arial", FontWeight.BOLD, 22));
+            } else {
+                inText.setFont(Font.font("Arial", FontWeight.BOLD, 16));
+            }
+        }else  {
+            if (inText.getText().length() < 38) {
+                inText.setFont(Font.font("Arial", FontWeight.BOLD,22));
+            }else {
+                inText.setFont(Font.font("Arial", FontWeight.BOLD, 16));
+            }
+        }
+    }
+
 
 
 }
