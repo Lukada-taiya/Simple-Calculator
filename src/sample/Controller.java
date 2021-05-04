@@ -16,7 +16,6 @@ import javafx.stage.Stage;
 
 import java.util.Optional;
 
-import static jdk.nashorn.internal.objects.Global.Infinity;
 
 public class Controller {
 
@@ -467,23 +466,23 @@ public class Controller {
             primaryStage.setWidth(WINDOW_WIDTH_RESIZE);
 
             btnSqrt = new Button("sqrt ");
-            btnSqrt.prefWidth(Infinity);
+            btnSqrt.prefWidth(200);
             btnSqrt.setFont(Font.font("Arial", 16));
 
             btnLog = new Button(" log ");
-            btnLog.prefWidth(Infinity);
+            btnLog.prefWidth(200);
             btnLog.setFont(Font.font("Arial", 16));
 
             btnSin = new Button(" sin  ");
-            btnSin.prefWidth(Infinity);
+            btnSin.prefWidth(200);
             btnSin.setFont(Font.font("Arial", 16));
 
             btnCos = new Button(" cos ");
-            btnCos.prefWidth(Infinity);
+            btnCos.prefWidth(200);
             btnCos.setFont(Font.font("Arial", 16));
 
             btnTan = new Button(" tan ");
-            btnTan.prefWidth(Infinity);
+            btnTan.prefWidth(200);
             btnTan.setFont(Font.font("Arial", 16));
 
             gridPane.getColumnConstraints().replaceAll(columnConstraints -> {
